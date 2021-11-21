@@ -40,6 +40,8 @@ Q = [" What is the Italian word for PIE?|a.Mozarella|b.Pasty|c.Patty|d.Pizza",
 
 A = ['d', 'a', 'b', 'a', 'a', 'a', 'a', 'b', 'a', 'c', 'b', 'd', 'd', 'c', 'a', 'b', 'a']
 
+ALLOWED_TO_PASS = [1]*NUMBER_OF_PLAYER
+
 def broadcast(message):
     for client in clients:
         client.send(message.encode("ascii"))
@@ -57,8 +59,15 @@ def remain_questions():
     broadcast(f"remainquestion|{len(Q)}")
 
 def wrong_turn_error(turn):
-    clients[turn].send(f"error|{nicknames[turn]}".encode("ascii"))
+    clients[turn].send(f"wrongturn|{nicknames[turn]}".encode("ascii"))
     time.sleep(0.2)
+
+def not_allowed_to_pass_error(turn):
+    clients[turn].send(f"notallowedtopass|{nicknames[turn]}".encode("ascii"))
+    time.sleep(0.2)
+
+def pass_to_next_player(turn):
+    broadcast(f"passtonextplayer|{nicknames[turn]}")
 
 def countdown():
     broadcast("time|")
@@ -91,17 +100,27 @@ def client_thread(client):
                     break
                 current_client += 1
             if current_client == turn:
+                go_next_player = True
                 if message == A[question]:
                     correct(turn)
                     A.remove(A[question])
                     Q.remove(Q[question])
                     quiz()
-                else:
-                    incorrect(turn)
+                elif message == "q":
+                    if ALLOWED_TO_PASS[current_client] == 1:
+                        pass_to_next_player(current_client)
+                        ALLOWED_TO_PASS[current_client] = 0
+                    else:
+                        not_allowed_to_pass_error(current_client)
+                        go_next_player = False
 
-                turn+=1
-                if turn >= len(clients):
-                    turn = 0
+                else:
+                    incorrect(current_client)
+
+                if go_next_player == True:
+                    turn+=1
+                    if turn >= len(clients):
+                        turn = 0
 
                 remain_players()
                 remain_questions()

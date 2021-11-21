@@ -22,7 +22,7 @@ def receive():
                     print(item + "\n")
         elif prefix == "remainquestion":
             print(f"Remain questions: {message_arr[1]}\n")
-        elif prefix == "error":
+        elif prefix == "wrongturn":
             print("This is not your turn !!!!!\n")
         elif prefix == "turn":
             print(f"{message_arr[1]}'s turn\n")
@@ -30,6 +30,10 @@ def receive():
             print(f"{message_arr[1]}'s answer is correct !!!!!\n")
         elif prefix == "incorrect":
             print(f"{message_arr[1]}'s answer is wrong !!!!!\n")
+        elif prefix == "passtonextplayer":
+            print(f"{message_arr[1]} refuse to answer this question\n")
+        elif prefix == "notallowedtopass":
+            print("You are only allowed to pass once each game")
         elif prefix == "remainplayers":
             for player in message_arr:
                 if player != "remainplayers":
