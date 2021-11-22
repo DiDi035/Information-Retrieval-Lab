@@ -5,6 +5,7 @@ def get_multiple_question_and_answer():
     
     f = open(path_file, 'r') 
     data_list = f.readlines()
+    f.close()
     
     for line in data_list:
         data_line = line.strip().split('#')
