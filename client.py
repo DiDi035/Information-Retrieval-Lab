@@ -28,8 +28,10 @@ orange = (255, 194, 134)
 yellow = (255, 241, 175)
 
 # global
-nickname = ''
 GAME_START = False
+nickname = ''
+answer = ''
+alert = ''
 
 receivedMessage = ''
 receivedError = ''
@@ -38,12 +40,6 @@ receivedRemain = ''
 receivedQuestion = ''
 receivedAnswers = []
 receivedPlayers = []
-
-
-def write():
-    while True:
-        message = input(f"{nickname}: ")
-        client.send(message.encode("ascii"))
 
 
 def receive():
@@ -55,6 +51,7 @@ def receive():
         print(message_arr)
         if prefix == "question":
             receivedQuestion = message_arr[1]
+            receivedAnswers = []
             for i in range(2, 6):
                 receivedAnswers.append(message_arr[i])
         elif prefix == "remainquestion":
@@ -62,7 +59,11 @@ def receive():
         elif prefix == "wrongturn":
             receivedError = "This is not your turn !\n"
         elif prefix == "turn":
-            receivedMessage = f"{message_arr[1]}'s turn\n"
+            receivedError = ''
+            if message_arr[1] == nickname:
+                receivedMessage = f"Your's turn\n"
+            else:
+                receivedMessage = f"{message_arr[1]}'s turn\n"
         elif prefix == "correct":
             receivedMessage = f"{message_arr[1]}'s answer is correct !!!!!\n"
         elif prefix == "incorrect":
@@ -72,25 +73,30 @@ def receive():
         elif prefix == "notallowedtopass":
             receivedError = "You are only allowed to pass once each game"
         elif prefix == "remainplayers":
+            receivedPlayers = []
             for player in message_arr:
                 if player != "remainplayers":
                     receivedPlayers.append(player)
 
 
 def renderWelcomePage():
-    title = title_font.render("Da Quiz", True, darkGreen)
+    renderTitle = title_font.render("Da Quiz", True, darkGreen)
     # (width, height)
-    screen.blit(title, (380, 100))
+    screen.blit(renderTitle, (380, 100))
 
-    user = font.render(nickname, True, darkGreen)
-    screen.blit(user, (400, 370))
+    renderAlert = font.render(
+        alert, True, darkGreen)
+    screen.blit(renderAlert, (380, 300))
+
+    renderNickname = font.render(nickname, True, darkGreen)
+    screen.blit(renderNickname, (400, 370))
 
     # (left, top) (width, height)
     input_box = pygame.Rect((380, 400), (300, 1))
     pygame.draw.rect(screen, (0, 0, 0), input_box)
 
-    start = font.render('Press Space to Start', True, darkGreen)
-    screen.blit(start, (380, 480))
+    renderInstruction = font.render('Press Space to Start', True, darkGreen)
+    screen.blit(renderInstruction, (380, 480))
 
 
 def renderGamePage():
@@ -121,8 +127,10 @@ def renderGamePage():
     pygame.draw.rect(screen, (0, 0, 0), divider2)
 
     # render question and answers
-    renderQuestion = font.render(receivedQuestion, True, darkGreen)
-    screen.blit(renderQuestion, (350, 180))
+    for i in range(0, len(receivedQuestion), 50):
+        renderQuestion = font.render(
+            receivedQuestion[i:i+50], True, darkGreen)
+        screen.blit(renderQuestion, (350, i*20 + 180))
 
     posX = [400, 400, 700, 700]
     posY = [300, 400, 300, 400]
@@ -139,7 +147,6 @@ def renderGamePage():
 
 
 receive_thread = threading.Thread(target=receive)
-write_thread = threading.Thread(target=write)
 
 while True:
     screen.fill(lightGreen)
@@ -148,29 +155,31 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                if nickname == '':
-                    alert = font.render(
-                        'Please type in your nickname', True, (0, 0, 0))
-                    screen.blit(alert, (370, 300))
+            if GAME_START:
+                if event.key == pygame.K_a or event.key == pygame.K_b or event.key == pygame.K_c or event.key == pygame.K_d or event.key == pygame.K_q:
+                    answer = event.unicode
+                    print(answer)
+                    client.send(answer.encode("ascii"))
                 else:
-                    # check nickname
-                    client.send(nickname.encode("ascii"))
-                    message = client.recv(1024).decode("ascii")
-                    if message == "valid":
-                        receive_thread.start()
-                        write_thread.start()
-                        GAME_START = True
-                    else:
-                        alert = font.render(
-                            'This nickname is taken', True, (0, 0, 0))
-                        screen.blit(alert, (370, 300))
-            elif event.key == pygame.K_BACKSPACE:
-                nickname = nickname[:-1]
+                    answer = ''
             else:
-                if len(nickname) < 10:
-                    nickname += event.unicode
-
+                if event.key == pygame.K_SPACE:
+                    if nickname == '':
+                        alert = 'Please type in your nickname'
+                    else:
+                        # check nickname
+                        client.send(nickname.encode("ascii"))
+                        message = client.recv(1024).decode("ascii")
+                        if message == "valid":
+                            receive_thread.start()
+                            GAME_START = True
+                        else:
+                            alert = 'This nickname is taken'
+                elif event.key == pygame.K_BACKSPACE:
+                    nickname = nickname[:-1]
+                else:
+                    if len(nickname) < 10:
+                        nickname += event.unicode
     if GAME_START:
         renderGamePage()
     else:
