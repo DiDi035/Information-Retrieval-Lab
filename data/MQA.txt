@@ -1,30 +1,30 @@
-What type of animal is a seahorse?|Crustacean|Arachnid|Fish|Shell#Fish
-Which of the following dog breeds is the smallest?|Dachshund|Poodle|Pomeranian|Chihuahua#Chihuahua
-What color are zebras?|White with black stripes|Black with white stripes|Both of the above|None of the above#Black with white stripes
-What existing bird has the largest wingspan?|Stork|Swan|Condor|Albatross#Albatross
-What is the biggest animal that has ever lived?|Blue whale|African elephant|Apatosaurus (aka Brontosaurus)|Spinosaurus#Blue whale
-Which of these animals lives the longest?|Ocean quahog (clam)|Red sea urchin|Galapagos tortoise|Rougheye rockfish#Ocean quahog (clam)
-What are female elephants called?|Mares|Sows|Cows|Dams#Cows
-Which of the following animals sleeps standing up?|Gorillas|Flamingos|Hedgehogs|Ravens#Flamingos
-What is the fastest water animal?|Porpoise|Sailfish|Flying fish|Tuna#Sailfish
-How many legs does a butterfly have?|2|4|6|8#6
-What is the maximum running land speed of Crocodile?|5 KMPL|12 KMPL|15 KMPL|17 KMPL#17 KMPL
-Name the bird that migrates from the north pole to the south pole and back?|Arctic tern|Swallow|Crane|Penguin#Arctic tern
-Which is the longest snake in the world?|Black Mamba|Puff Adder|Reticulated Python|Anaconda#Reticulated Python
-Which one of the following is not a true snake ?|Blind snake|Glass snake|Sea snake|Tree snake#Glass snake
-What is the fastest of all the birds?|Blood phesant|Swift|Sparrow|None#Swift
-What is a rhinos horn made of ?|Bones|Collagen|Fibroin|Kerotin#Kerotin
-The period after parturition in which animal produces milk is called as ........|Calving period|Lactation period|Dry period|Conception#Lactation period
-In which of the following kinds of organism is the phenomenon found wherein the female kills the male after copulation|Dragonfly|Honeybee|Spider|Pit viper#Spider
-Fish swim with the help of:|Fins|Gills|Flippers|None of the above#Fins
-Turtles swim with the help of:|Fins|Gills|Flippers|None of the above#Flippers
-Which animals don’t have legs?|Earthworm|Caterpillar|Centipede|None of these#Earthworm
-Insects have ______ legs.|4|5|6|8#6
-Rhinoceros is ______ animal|Herbivores|Carnivores|Omnivores|None of these#Herbivores
-Which animal lives both in land and in water?|Fish|Sharks|Hippopotamus|Dolphin#Hippopotamus
-Which class has the largest number of animals?Mammals|Fishes|Insects|Reptiles#Insects
-Salamander belongs to the class:|Aves|Reptiles|Pisces|Amphibian#Amphibian
-The surroundings in which an animal lives and grows is called its|Climate|Habitat|Behavior|None of these#Habitat
-The wings of the birds are their|Hind limbs|Fore limbs|Separate structure|None of these#Fore limbs
-Where can you find the largest coral reef in the world?|Australia|Florida, USA|Mexico|Belize#Australia
-Which animal was recognized as the symbol of Canada in 1975?|Moose|Beaver|Canadian Horse|Cow#Beaver
+What type of animal is a seahorse?|Crustacean|Arachnid|Fish|Shell#c
+Which of the following dog breeds is the smallest?|Dachshund|Poodle|Pomeranian|Chihuahua#d
+What color are zebras?|White with black stripes|Black with white stripes|Both of the above|None of the above#b
+What existing bird has the largest wingspan?|Stork|Swan|Condor|Albatross#d
+What is the biggest animal that has ever lived?|Blue whale|African elephant|Apatosaurus (aka Brontosaurus)|Spinosaurus#a
+Which of these animals lives the longest?|Ocean quahog (clam)|Red sea urchin|Galapagos tortoise|Rougheye rockfish#a
+What are female elephants called?|Mares|Sows|Cows|Dams#c
+Which of the following animals sleeps standing up?|Gorillas|Flamingos|Hedgehogs|Ravens#b
+What is the fastest water animal?|Porpoise|Sailfish|Flying fish|Tuna#b
+How many legs does a butterfly have?|2|4|6|8#c
+What is the maximum running land speed of Crocodile?|5 KMPL|12 KMPL|15 KMPL|17 KMPL#d
+Name the bird that migrates from the north pole to the south pole and back?|Arctic tern|Swallow|Crane|Penguin#a
+Which is the longest snake in the world?|Black Mamba|Puff Adder|Reticulated Python|Anaconda#c
+Which one of the following is not a true snake ?|Blind snake|Glass snake|Sea snake|Tree snake#b
+What is the fastest of all the birds?|Blood phesant|Swift|Sparrow|None#b
+What is a rhinos horn made of ?|Bones|Collagen|Fibroin|Kerotin#d
+The period after parturition in which animal produces milk is called as ........|Calving period|Lactation period|Dry period|Conception#b
+In which of the following kinds of organism is the phenomenon found wherein the female kills the male after copulation|Dragonfly|Honeybee|Spider|Pit viper#c
+Fish swim with the help of:|Fins|Gills|Flippers|None of the above#a
+Turtles swim with the help of:|Fins|Gills|Flippers|None of the above#c
+Which animals don’t have legs?|Earthworm|Caterpillar|Centipede|None of these#a
+Insects have ______ legs.|4|5|6|8#c
+Rhinoceros is ______ animal|Herbivores|Carnivores|Omnivores|None of these#a
+Which animal lives both in land and in water?|Fish|Sharks|Hippopotamus|Dolphin#c
+Which class has the largest number of animals?Mammals|Fishes|Insects|Reptiles#c
+Salamander belongs to the class:|Aves|Reptiles|Pisces|Amphibian#d
+The surroundings in which an animal lives and grows is called its|Climate|Habitat|Behavior|None of these#b
+The wings of the birds are their|Hind limbs|Fore limbs|Separate structure|None of these#b
+Where can you find the largest coral reef in the world?|Australia|Florida, USA|Mexico|Belize#a
+Which animal was recognized as the symbol of Canada in 1975?|Moose|Beaver|Canadian Horse|Cow#b
