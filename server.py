@@ -61,6 +61,12 @@ def send_turn(turn):
 def correct(turn):
     broadcast(f"correct|{nicknames[turn]}")
 
+def win(turn):
+    broadcast(f"win|{nicknames[turn]}")
+
+def game_over():
+
+
 def incorrect(turn):
     broadcast(f"incorrect|{nicknames[turn]}")
 
@@ -84,19 +90,27 @@ def client_thread(client):
                 current_client += 1
             if current_client == turn:
                 go_next_player = True
-                if message == A[question]:
-                    correct(turn)
-                    A.remove(A[question])
-                    Q.remove(Q[question])
-                    quiz()
-                elif message == "q":
+
+                if message == "q":
                     if ALLOWED_TO_PASS[current_client] == 1:
                         pass_to_next_player(current_client)
                         ALLOWED_TO_PASS[current_client] = 0
                     else:
                         not_allowed_to_pass_error(current_client)
                         go_next_player = False
+                elif message == "timeout":
+                    remove(current_client)
+                    if current_client >= len(clients):
+                        current_client = 0
 
+                    go_next_player = False
+                elif len(clients) == 1:
+                    win(current_client)
+                elif message == A[question]:
+                    correct(turn)
+                    A.remove(A[question])
+                    Q.remove(Q[question])
+                    quiz()
                 else:
                     incorrect(current_client)
 
@@ -113,9 +127,9 @@ def client_thread(client):
         else:
             remove(client)
 
-def remove(client):
-    if client in clients:
-        clients.remove(client)
+def remove(index):
+    clients.remove(clients[index])
+    nicknames.remove(nicknames[index])
 
 while True:
     client, address = server.accept()
