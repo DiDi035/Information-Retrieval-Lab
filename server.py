@@ -52,9 +52,6 @@ def not_allowed_to_pass_error(turn):
 def pass_to_next_player(turn):
     broadcast(f"passtonextplayer|{nicknames[turn]}")
 
-def countdown():
-    broadcast("time|")
-
 def send_turn(turn):
     broadcast(f"turn|{nicknames[turn]}")
 
