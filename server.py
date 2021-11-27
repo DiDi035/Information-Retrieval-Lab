@@ -102,10 +102,12 @@ def client_thread(client):
                     if current_client >= len(clients):
                         current_client = 0
 
+                    if len(clients) == 1:
+                        win(current_client)
+                        game_over()
+                        return
+
                     go_next_player = False
-                elif len(clients) == 1:
-                    win(current_client)
-                    return
                 elif message == A[question]:
                     if len(Q) == 1:
                         win(current_client)

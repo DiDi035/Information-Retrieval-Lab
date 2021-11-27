@@ -66,6 +66,8 @@ def receive():
                 receivedMessage = f"{message_arr[1]}'s turn\n"
         elif prefix == "correct":
             receivedMessage = f"{message_arr[1]}'s answer is correct !!!!!\n"
+        elif prefix == "win":
+            pass # handle winner here
         elif prefix == "incorrect":
             receivedMessage = f"{message_arr[1]}'s answer is wrong !!!!!\n"
         elif prefix == "passtonextplayer":
