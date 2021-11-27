@@ -58,14 +58,16 @@ def countdown():
 def send_turn(turn):
     broadcast(f"turn|{nicknames[turn]}")
 
+def game_over():
+    time.sleep(5)
+    for client in clients:
+        client.close()
+
 def correct(turn):
     broadcast(f"correct|{nicknames[turn]}")
 
 def win(turn):
     broadcast(f"win|{nicknames[turn]}")
-
-def game_over():
-
 
 def incorrect(turn):
     broadcast(f"incorrect|{nicknames[turn]}")
@@ -106,11 +108,16 @@ def client_thread(client):
                     go_next_player = False
                 elif len(clients) == 1:
                     win(current_client)
+                    return
                 elif message == A[question]:
-                    correct(turn)
-                    A.remove(A[question])
-                    Q.remove(Q[question])
-                    quiz()
+                    if len(Q) == 1:
+                        win(current_client)
+                        return
+                    else:
+                        correct(turn)
+                        A.remove(A[question])
+                        Q.remove(Q[question])
+                        quiz()
                 else:
                     incorrect(current_client)
 
@@ -128,6 +135,7 @@ def client_thread(client):
             remove(client)
 
 def remove(index):
+    clients[index].close()
     clients.remove(clients[index])
     nicknames.remove(nicknames[index])
 
