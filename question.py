@@ -14,6 +14,4 @@ def get_multiple_question_and_answer():
     
     return question, answer
 
-# question,answer = get_multiple_question_and_answer()
-# print(question)
-# print(answer)
+question,answer = get_multiple_question_and_answer()

@@ -1,4 +1,4 @@
-What type of animal is a seahorse?|Crustacean|Arachnid|FishShell#Fish
+What type of animal is a seahorse?|Crustacean|Arachnid|Fish|Shell#Fish
 Which of the following dog breeds is the smallest?|Dachshund|Poodle|Pomeranian|Chihuahua#Chihuahua
 What color are zebras?|White with black stripes|Black with white stripes|Both of the above|None of the above#Black with white stripes
 What existing bird has the largest wingspan?|Stork|Swan|Condor|Albatross#Albatross

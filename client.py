@@ -134,8 +134,9 @@ def renderGamePage():
 
     posX = [400, 400, 700, 700]
     posY = [300, 400, 300, 400]
+    keys = ['A. ', 'B. ', 'C. ', 'D. ']
     for i in range(len(receivedAnswers)):
-        renderAnswer = font.render(receivedAnswers[i], True, darkGreen)
+        renderAnswer = font.render(keys[i] + receivedAnswers[i], True, darkGreen)
         screen.blit(renderAnswer, (posX[i], posY[i]))
 
     # render instructions
